@@ -1,0 +1,108 @@
+@prefix finance: <https://w3id.org/finance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+finance:Address a rdfs:Class .
+
+finance:Company a rdfs:Class .
+
+finance:ContactInformation a rdfs:Class .
+
+finance:FinancialData a rdfs:Class .
+
+finance:Industry a rdfs:Class .
+
+finance:InvestmentFund a rdfs:Class .
+
+finance:Job a rdfs:Class .
+
+finance:Person a rdfs:Class .
+
+finance:Sector a rdfs:Class .
+
+finance:belongsToSector a owl:ObjectProperty ;
+    rdfs:domain finance:Industry ;
+    rdfs:range finance:Sector .
+
+finance:hasAddress a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:Address .
+
+finance:hasAge a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:integer .
+
+finance:hasCity a owl:DatatypeProperty ;
+    rdfs:domain finance:Address ;
+    rdfs:range xsd:string .
+
+finance:hasContactInformation a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:ContactInformation .
+
+finance:hasCountry a owl:DatatypeProperty ;
+    rdfs:domain finance:Address ;
+    rdfs:range xsd:string .
+
+finance:hasEmployee a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:Person .
+
+finance:hasExercisedValue a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:float .
+
+finance:hasFinancialData a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:FinancialData .
+
+finance:hasIndustry a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:Industry .
+
+finance:hasJobTitle a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:string .
+
+finance:hasName a owl:DatatypeProperty ;
+    rdfs:domain finance:Company,
+        finance:Person ;
+    rdfs:range xsd:string .
+
+finance:hasPhone a owl:DatatypeProperty ;
+    rdfs:domain finance:ContactInformation ;
+    rdfs:range xsd:string .
+
+finance:hasPostalCode a owl:DatatypeProperty ;
+    rdfs:domain finance:Address ;
+    rdfs:range xsd:string .
+
+finance:hasState a owl:DatatypeProperty ;
+    rdfs:domain finance:Address ;
+    rdfs:range xsd:string .
+
+finance:hasStreet a owl:DatatypeProperty ;
+    rdfs:domain finance:Address ;
+    rdfs:range xsd:string .
+
+finance:hasSymbol a owl:DatatypeProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range xsd:string .
+
+finance:hasTotalPay a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:float .
+
+finance:hasUnexercisedValue a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:float .
+
+finance:hasWebsite a owl:DatatypeProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range xsd:string .
+
+finance:hasYearBorn a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:integer .
+
