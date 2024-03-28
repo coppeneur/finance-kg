@@ -1,0 +1,9 @@
+PREFIX finance: <https://w3id.org/finance/>
+
+SELECT ?sector ?sectorName
+WHERE {
+  ?sector a finance:Industry .
+  ?sector rdfs:label ?sectorName .
+}
+
+

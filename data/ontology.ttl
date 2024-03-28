@@ -67,6 +67,7 @@ finance:hasJobTitle a owl:DatatypeProperty ;
 
 finance:hasName a owl:DatatypeProperty ;
     rdfs:domain finance:Company,
+        finance:InvestmentFund,
         finance:Person ;
     rdfs:range xsd:string .
 
