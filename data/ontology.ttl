@@ -45,10 +45,6 @@ finance:hasCountry a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
     rdfs:range xsd:string .
 
-finance:hasEmployee a owl:ObjectProperty ;
-    rdfs:domain finance:Company ;
-    rdfs:range finance:Person .
-
 finance:hasExercisedValue a owl:DatatypeProperty ;
     rdfs:domain finance:Person ;
     rdfs:range xsd:float .
@@ -56,6 +52,10 @@ finance:hasExercisedValue a owl:DatatypeProperty ;
 finance:hasFinancialData a owl:ObjectProperty ;
     rdfs:domain finance:Company ;
     rdfs:range finance:FinancialData .
+
+finance:hasGender a owl:DatatypeProperty ;
+    rdfs:domain finance:Person ;
+    rdfs:range xsd:string .
 
 finance:hasIndustry a owl:ObjectProperty ;
     rdfs:domain finance:Company ;
@@ -65,8 +65,13 @@ finance:hasJobTitle a owl:DatatypeProperty ;
     rdfs:domain finance:Person ;
     rdfs:range xsd:string .
 
+finance:hasKeyExecutive a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:Person .
+
 finance:hasName a owl:DatatypeProperty ;
     rdfs:domain finance:Company,
+        finance:Industry,
         finance:InvestmentFund,
         finance:Person ;
     rdfs:range xsd:string .
@@ -87,7 +92,7 @@ finance:hasStreet a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
     rdfs:range xsd:string .
 
-finance:hasSymbol a owl:DatatypeProperty ;
+finance:hasTicker a owl:DatatypeProperty ;
     rdfs:domain finance:Company ;
     rdfs:range xsd:string .
 
