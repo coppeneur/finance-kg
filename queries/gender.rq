@@ -1,7 +1,4 @@
-# get all persons and its name in a sparql query
-# select count of persons that hasGender 'w' and 'm' and '' in a sparql query for me
-
-
+# select count of persons that hasGender 'w' and 'm' and ''
 SELECT ?gender (COUNT(?person) AS ?count)
 WHERE {
   ?person a finance:Person .

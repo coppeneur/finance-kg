@@ -1,10 +1,11 @@
-# count the companies in each etf in a sparql query
 
-SELECT (COUNT(?company) AS ?count)
+# ETF name and the amount of companies that are in the ETF
+SELECT ?etfname (COUNT(?company) AS ?companyCount) (COUNT(?companyName) AS ?companyNameCount)
 WHERE {
-    ?etf rdf:type :ETF .
-    ?etf :contains ?company .
-    ?company rdf:type :Company .
-    FILTER(?etf = :%s)
+  ?etf a finance:ETF ;
+       finance:hasName ?etfname ;
+       finance:hasCompany ?company .
+  ?company finance:hasName ?companyName .
 }
-# what does this filter mean     FILTER(?etf = :%s)
+GROUP BY ?etfname
+

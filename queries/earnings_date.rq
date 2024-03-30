@@ -1,0 +1,7 @@
+# earning dates for MSFT
+SELECT ?earningsDate ?date
+WHERE {
+  ?company finance:hasTicker "MSFT" .
+  ?company finance:hasEarningsDate ?earningsDate .
+  ?earningsDate finance:hasDate ?date .
+}
