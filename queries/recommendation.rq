@@ -1,0 +1,9 @@
+PREFIX finance: <https://w3id.org/finance/>
+
+# get all recommendations for a company MSFT and get recommendation value
+SELECT ?recommendationValue
+WHERE {
+  ?company finance:hasRecommendation ?recommendation .
+  ?recommendation finance:hasStrongBuyCount ?recommendationValue .
+  ?company finance:hasTicker "MSFT" .
+}
