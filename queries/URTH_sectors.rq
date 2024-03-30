@@ -1,0 +1,19 @@
+SELECT ?sectorName ((COUNT(?company) * 100.0 / ?totalCompanies) AS ?sectorPercentage)
+WHERE {
+  {
+    SELECT (COUNT(?company) AS ?totalCompanies)
+    WHERE {
+      ?etf a finance:ETF ;
+           finance:hasTicker "URTH" .
+      ?etf finance:hasCompany ?company .
+    }
+  }
+  ?etf a finance:ETF ;
+       finance:hasTicker "URTH" .
+  ?etf finance:hasCompany ?company .
+  ?company finance:hasIndustry ?industry .
+  ?industry finance:belongsToSector ?sector .
+  ?sector rdfs:label ?sectorName .
+}
+GROUP BY ?sectorName ?totalCompanies
+ORDER BY DESC(?sectorPercentage)

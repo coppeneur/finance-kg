@@ -1,4 +1,3 @@
-# select count of persons that hasGender 'w' and 'm' and ''
 SELECT ?gender (COUNT(?person) AS ?count)
 WHERE {
   ?person a finance:Person .

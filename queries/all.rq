@@ -1,5 +1,3 @@
-PREFIX finance: <https://w3id.org/finance/>
-
 SELECT ?s ?p ?o
 WHERE {
   ?s ?p ?o

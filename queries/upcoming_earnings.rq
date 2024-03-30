@@ -1,0 +1,9 @@
+SELECT DISTINCT ?companyName
+WHERE {
+  ?company rdf:type finance:Company ;
+           finance:hasName ?companyName .
+  OPTIONAL {
+    ?company finance:hasEarningsDate ?earningsDate .
+    FILTER (!BOUND(?earningsDate))
+  }
+}

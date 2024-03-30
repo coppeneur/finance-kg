@@ -1,5 +1,3 @@
-
-# ETF name and the amount of companies that are in the ETF
 SELECT ?etfname (COUNT(?company) AS ?companyCount) (COUNT(?companyName) AS ?companyNameCount)
 WHERE {
   ?etf a finance:ETF ;

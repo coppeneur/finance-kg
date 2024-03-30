@@ -1,0 +1,7 @@
+SELECT ?etfName (COUNT(?company) AS ?companyCount)
+WHERE {
+  ?etf a finance:ETF ;
+       finance:hasCompany ?company ;
+       finance:hasName ?etfName .
+}
+GROUP BY ?etf ?etfName

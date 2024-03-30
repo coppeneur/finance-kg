@@ -1,0 +1,15 @@
+SELECT
+    (COUNT(DISTINCT ?company) AS ?totalCompanies)
+    (COUNT(DISTINCT ?companyWithAddress) AS ?companyWithAddress)
+WHERE {
+    {
+        SELECT DISTINCT ?company
+        WHERE {
+            ?company a finance:Company .
+        }
+    }
+    OPTIONAL {
+        ?companyWithAddress a finance:Company ;
+            finance:hasAddress ?address .
+    }
+}

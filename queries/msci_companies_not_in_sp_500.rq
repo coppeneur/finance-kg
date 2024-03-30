@@ -1,0 +1,18 @@
+SELECT ?companyName ?companyTicker
+WHERE {
+  # Select companies in the ETF with ticker 'URTH'
+  ?urthEtf rdf:type finance:ETF ;
+           finance:hasTicker "URTH" ;
+           finance:hasCompany ?company .
+
+  # Check if the company is not in the ETF with ticker 'IVV'
+  FILTER NOT EXISTS {
+    ?ivvEtf rdf:type finance:ETF ;
+            finance:hasTicker "IVV" ;
+            finance:hasCompany ?company .
+  }
+
+  # Get the name and ticker of the company
+  ?company finance:hasName ?companyName ;
+           finance:hasTicker ?companyTicker .
+}

@@ -1,0 +1,34 @@
+SELECT ?executiveName ?jobTitle ?totalPay ?companyName
+WHERE {
+  {
+    # Query for the highest-paid male executive
+    SELECT ?executiveName ?jobTitle ?totalPay ?companyName
+    WHERE {
+      ?company rdf:type finance:Company ;
+               finance:hasKeyExecutive ?executive ;
+               finance:hasName ?companyName .
+      ?executive finance:hasTotalPay ?totalPay ;
+                 finance:hasName ?executiveName ;
+                 finance:hasGender "m"^^xsd:string ;
+                 finance:hasJobTitle ?jobTitle .
+    }
+    ORDER BY DESC(?totalPay)
+    LIMIT 1
+  }
+  UNION
+  {
+    SELECT ?executiveName ?jobTitle ?totalPay ?companyName
+    WHERE {
+      ?company rdf:type finance:Company ;
+               finance:hasKeyExecutive ?executive ;
+               finance:hasName ?companyName .
+      ?executive finance:hasTotalPay ?totalPay ;
+                 finance:hasName ?executiveName ;
+                 finance:hasGender "w"^^xsd:string ;
+                 finance:hasJobTitle ?jobTitle .
+    }
+    ORDER BY DESC(?totalPay)
+    LIMIT 1
+  }
+}
+ORDER BY DESC(?totalPay)

@@ -1,0 +1,15 @@
+SELECT
+    (COUNT(DISTINCT ?company) AS ?totalCompanies)
+    (COUNT(DISTINCT ?companyWithRecommendation) AS ?companiesWithRecommendation)
+WHERE {
+    {
+        SELECT DISTINCT ?company
+        WHERE {
+            ?company a finance:Company .
+        }
+    }
+    OPTIONAL {
+        ?companyWithRecommendation a finance:Company ;
+            finance:hasRecommendation ?recommendation .
+    }
+}

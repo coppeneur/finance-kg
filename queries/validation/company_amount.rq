@@ -1,0 +1,4 @@
+SELECT (COUNT(DISTINCT ?company) AS ?totalDistinctCompanies)
+WHERE {
+  ?company a finance:Company .
+}

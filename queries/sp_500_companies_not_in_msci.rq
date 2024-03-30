@@ -1,0 +1,15 @@
+SELECT ?companyName ?companyTicker
+WHERE {
+  ?ivvEtf rdf:type finance:ETF ;
+          finance:hasTicker "IVV" ;
+          finance:hasCompany ?company .
+
+  FILTER NOT EXISTS {
+    ?urthEtf rdf:type finance:ETF ;
+             finance:hasTicker "URTH" ;
+             finance:hasCompany ?company .
+  }
+
+  ?company finance:hasName ?companyName ;
+           finance:hasTicker ?companyTicker .
+}

@@ -1,0 +1,9 @@
+SELECT DISTINCT ?companyName ?ticker
+WHERE {
+  ?company a finance:Company ;
+           finance:hasName ?companyName ;
+           finance:hasTicker ?ticker .
+  FILTER NOT EXISTS {
+    ?company finance:hasIndustry ?industry .
+  }
+}

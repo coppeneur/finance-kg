@@ -1,0 +1,14 @@
+SELECT ?country (COUNT(DISTINCT ?company) AS ?companyCount)
+WHERE {
+  ?etf rdf:type finance:ETF ;
+       finance:hasTicker "URTH" ;
+       finance:hasCompany ?company .
+
+  # Get the address of each company
+  ?company finance:hasAddress ?address .
+
+  # Extract the country from the address
+  ?address finance:hasCountry ?country .
+}
+GROUP BY ?country
+ORDER BY DESC(?companyCount)
