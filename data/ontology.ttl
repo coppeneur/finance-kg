@@ -1,6 +1,7 @@
 @prefix finance: <https://w3id.org/finance/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recommendation: <https://w3id.org/finance/Recommendation> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 finance:Address a rdfs:Class .
@@ -9,15 +10,17 @@ finance:Company a rdfs:Class .
 
 finance:ContactInformation a rdfs:Class .
 
-finance:FinancialData a rdfs:Class .
+finance:ETF a rdfs:Class .
+
+finance:EarningsDate a rdfs:Class .
 
 finance:Industry a rdfs:Class .
-
-finance:InvestmentFund a rdfs:Class .
 
 finance:Job a rdfs:Class .
 
 finance:Person a rdfs:Class .
+
+recommendation: a rdfs:Class .
 
 finance:Sector a rdfs:Class .
 
@@ -33,29 +36,56 @@ finance:hasAge a owl:DatatypeProperty ;
     rdfs:domain finance:Person ;
     rdfs:range xsd:integer .
 
+finance:hasBuyCount a owl:DatatypeProperty ;
+    rdfs:domain recommendation: ;
+    rdfs:range xsd:integer .
+
 finance:hasCity a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
     rdfs:range xsd:string .
 
-finance:hasContactInformation a owl:ObjectProperty ;
-    rdfs:domain finance:Company ;
-    rdfs:range finance:ContactInformation .
+finance:hasCompany a owl:ObjectProperty ;
+    rdfs:domain finance:ETF ;
+    rdfs:range finance:Company .
 
 finance:hasCountry a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
     rdfs:range xsd:string .
 
+finance:hasCurrency a owl:DatatypeProperty ;
+    rdfs:domain finance:Company,
+        finance:ETF ;
+    rdfs:range xsd:string .
+
+finance:hasDate a owl:DatatypeProperty ;
+    rdfs:domain finance:EarningsDate,
+        recommendation: ;
+    rdfs:range xsd:date,
+        xsd:string .
+
+finance:hasEarningsDate a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range finance:EarningsDate .
+
+finance:hasEstimatedEPS a owl:DatatypeProperty ;
+    rdfs:domain finance:EarningsDate ;
+    rdfs:range xsd:float .
+
 finance:hasExercisedValue a owl:DatatypeProperty ;
     rdfs:domain finance:Person ;
     rdfs:range xsd:float .
 
-finance:hasFinancialData a owl:ObjectProperty ;
+finance:hasFullTimeEmployees a owl:DatatypeProperty ;
     rdfs:domain finance:Company ;
-    rdfs:range finance:FinancialData .
+    rdfs:range xsd:integer .
 
 finance:hasGender a owl:DatatypeProperty ;
     rdfs:domain finance:Person ;
     rdfs:range xsd:string .
+
+finance:hasHoldCount a owl:DatatypeProperty ;
+    rdfs:domain recommendation: ;
+    rdfs:range xsd:integer .
 
 finance:hasIndustry a owl:ObjectProperty ;
     rdfs:domain finance:Company ;
@@ -71,18 +101,26 @@ finance:hasKeyExecutive a owl:ObjectProperty ;
 
 finance:hasName a owl:DatatypeProperty ;
     rdfs:domain finance:Company,
+        finance:ETF,
         finance:Industry,
-        finance:InvestmentFund,
         finance:Person ;
-    rdfs:range xsd:string .
-
-finance:hasPhone a owl:DatatypeProperty ;
-    rdfs:domain finance:ContactInformation ;
     rdfs:range xsd:string .
 
 finance:hasPostalCode a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
     rdfs:range xsd:string .
+
+finance:hasRecommendation a owl:ObjectProperty ;
+    rdfs:domain finance:Company ;
+    rdfs:range recommendation: .
+
+finance:hasReportedEPS a owl:DatatypeProperty ;
+    rdfs:domain finance:EarningsDate ;
+    rdfs:range xsd:float .
+
+finance:hasSellCount a owl:DatatypeProperty ;
+    rdfs:domain recommendation: ;
+    rdfs:range xsd:integer .
 
 finance:hasState a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
@@ -92,8 +130,21 @@ finance:hasStreet a owl:DatatypeProperty ;
     rdfs:domain finance:Address ;
     rdfs:range xsd:string .
 
+finance:hasStrongBuyCount a owl:DatatypeProperty ;
+    rdfs:domain recommendation: ;
+    rdfs:range xsd:integer .
+
+finance:hasStrongSellCount a owl:DatatypeProperty ;
+    rdfs:domain recommendation: ;
+    rdfs:range xsd:integer .
+
+finance:hasSurprise a owl:DatatypeProperty ;
+    rdfs:domain finance:EarningsDate ;
+    rdfs:range xsd:float .
+
 finance:hasTicker a owl:DatatypeProperty ;
-    rdfs:domain finance:Company ;
+    rdfs:domain finance:Company,
+        finance:ETF ;
     rdfs:range xsd:string .
 
 finance:hasTotalPay a owl:DatatypeProperty ;
