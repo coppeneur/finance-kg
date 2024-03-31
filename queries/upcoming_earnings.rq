@@ -1,9 +1,11 @@
-SELECT DISTINCT ?companyName
+SELECT ?company ?companyName ?ticker ?oldestEarningsDate
 WHERE {
   ?company rdf:type finance:Company ;
-           finance:hasName ?companyName .
-  OPTIONAL {
-    ?company finance:hasEarningsDate ?earningsDate .
-    FILTER (!BOUND(?earningsDate))
-  }
+           finance:hasName ?companyName ;
+           finance:hasTicker ?ticker .
+  ?company finance:hasEarningsDate ?earningsDate .
+  ?earningsDate finance:hasDate ?oldestEarningsDate .
+  FILTER (BOUND(?oldestEarningsDate))
 }
+ORDER BY ?oldestEarningsDate
+LIMIT 1
