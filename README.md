@@ -3,7 +3,9 @@
 ## Overview
 This project aims to create a finance knowledge graph focusing on companies, industries, and sectors within ETFs. The knowledge graph is constructed using data gathered from various sources and organized in a structured format to facilitate analysis and comparison.
 
-![alt text](finance-kg.png)
+<p align="center">
+  <img src="finance-kg.png">
+</p>
 
 ## Data Sources
 - **yfinance Library**: The primary data source used for gathering information on companies, including ticker symbols, financial data, and other relevant details. More information about the yfinance library can be found [here](https://github.com/ranaroussi/yfinance).
